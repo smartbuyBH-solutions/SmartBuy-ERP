@@ -36,3 +36,6 @@ Desktop.ini
 # Caches e logs operacionais gerados
 *.tsbuildinfo
 .bootstrap-*.log
+
+# Next.js e TypeScript gerados
+next-env.d.ts

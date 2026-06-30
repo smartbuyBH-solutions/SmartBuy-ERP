@@ -189,6 +189,16 @@ function Write-TechnicalScaffold {
         [string]$Root
     )
 
+    $AcuteLowerE = [char]0x00E9
+    $CedillaLowerC = [char]0x00E7
+    $TildeLowerA = [char]0x00E3
+
+    $PreAtendimento =
+        "pr${AcuteLowerE}-atendimento"
+
+    $FoundationText =
+        "Funda${CedillaLowerC}${TildeLowerA}o t${AcuteLowerE}cnica inicializada."
+
     $NextConfig = @"
 import type { NextConfig } from "next";
 
@@ -214,7 +224,7 @@ export default nextConfig;
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
     "plugins": [
@@ -229,6 +239,7 @@ export default nextConfig;
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
   ],
@@ -272,7 +283,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "SmartBuyBH ERP",
   description:
-    "Plataforma de pré-atendimento e apoio operacional da Smart Buy BH.",
+    "Plataforma de $PreAtendimento e apoio operacional da Smart Buy BH.",
 };
 
 type RootLayoutProps = Readonly<{
@@ -295,7 +306,7 @@ export default function ErpHome() {
   return (
     <main>
       <h1>SmartBuyBH ERP</h1>
-      <p>Fundação técnica inicializada.</p>
+      <p>$FoundationText</p>
     </main>
   );
 }
