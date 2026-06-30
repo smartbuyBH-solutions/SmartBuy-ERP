@@ -141,7 +141,7 @@ $UnexpectedBootstrapArtifacts = @(
         Test-Path -LiteralPath $_
     }
 
-if ($UnexpectedBootstrapArtifacts.Count -ne 0) {
+if (@($UnexpectedBootstrapArtifacts).Count -ne 0) {
     Write-Host "Artefatos inesperados encontrados:"
     $UnexpectedBootstrapArtifacts
     throw "O ERP nao esta no estado inicial esperado."
