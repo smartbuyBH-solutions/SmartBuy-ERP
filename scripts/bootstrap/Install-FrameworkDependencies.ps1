@@ -96,11 +96,11 @@ Assert-Equal `
     -Expected "smartbuy-erp" `
     -Description "Nome do pacote"
 
-if ($null -ne $PackageBefore.dependencies) {
+if ($PackageBefore.PSObject.Properties.Name -contains "dependencies") {
     throw "Operacao bloqueada: dependencies ja existe no package.json."
 }
 
-if ($null -ne $PackageBefore.devDependencies) {
+if ($PackageBefore.PSObject.Properties.Name -contains "devDependencies") {
     throw "Operacao bloqueada: devDependencies ja existe no package.json."
 }
 
@@ -149,7 +149,7 @@ foreach ($DependencyName in $ExpectedDependencies.Keys) {
         -Description "Versao de $DependencyName"
 }
 
-if ($null -ne $PackageAfter.devDependencies) {
+if ($PackageAfter.PSObject.Properties.Name -contains "devDependencies") {
     throw "Operacao bloqueada: devDependencies foi alterado nesta etapa."
 }
 
