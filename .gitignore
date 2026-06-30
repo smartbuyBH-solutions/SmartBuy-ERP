@@ -1,0 +1,35 @@
+﻿# Dependencias
+node_modules/
+.pnpm-store/
+
+# Next.js e builds
+.next/
+out/
+dist/
+.turbo/
+.vercel/
+storybook-static/
+
+# Testes e cobertura
+coverage/
+playwright-report/
+test-results/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variaveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Editores e sistema operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
