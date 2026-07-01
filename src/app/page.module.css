@@ -1,0 +1,166 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero {
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.eyebrow,
+.title,
+.description {
+  margin: 0;
+}
+
+.eyebrow {
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 4px;
+  color: var(--text-primary);
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.description {
+  max-width: 720px;
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.statusBadge {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--success-dark);
+  background: var(--success-light);
+  border: 1px solid var(--success);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--success);
+}
+
+.metricValue,
+.metricLabel {
+  margin: 0;
+}
+
+.metricValue {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.metricLabel {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.panelText {
+  margin: 8px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+}
+
+.moduleList {
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+
+.moduleItem {
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-primary);
+  background: var(--neutral-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.moduleStatus {
+  color: var(--text-tertiary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.roleBadge {
+  margin-top: 12px;
+  padding: 6px 10px;
+  display: inline-flex;
+  color: var(--info);
+  background: var(--info-light);
+  border: 1px solid var(--info);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.nextStep {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.nextStepTitle,
+.nextStepText {
+  margin: 0;
+}
+
+.nextStepTitle {
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  font-weight: 800;
+}
+
+.nextStepText {
+  margin-top: 4px;
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .statusBadge {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
