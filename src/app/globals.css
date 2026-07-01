@@ -1,14 +1,4 @@
 @import "tailwindcss";
-
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  min-height: 100%;
-}
-
-body {
-  margin: 0;
-}
+@import "../styles/tokens.css";
+@import "../styles/theme.css";
+@import "../styles/utilities.css";
