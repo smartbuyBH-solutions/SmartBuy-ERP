@@ -597,6 +597,10 @@ export function AppShell({
   border-right: 1px solid var(--border-color);
 }
 
+.navigation {
+  min-width: 0;
+}
+
 .navigationLabel {
   margin: 0 0 8px;
   color: var(--text-tertiary);
