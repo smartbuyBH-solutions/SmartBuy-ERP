@@ -23,7 +23,8 @@
     "postcss": "8.5.16",
     "prettier": "3.9.0",
     "tailwindcss": "4.3.2",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "4.1.9"
   },
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1 --port 3000",
@@ -31,8 +32,10 @@
     "start": "next start --hostname 127.0.0.1 --port 3000",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
-    "check": "pnpm run format:check && pnpm run typecheck && pnpm run lint && pnpm run build",
+    "check": "pnpm run format:check && pnpm run typecheck && pnpm run lint && pnpm run test:unit && pnpm run build",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "pnpm run test:unit",
+    "test:unit": "vitest run"
   }
 }
