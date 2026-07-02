@@ -22,13 +22,7 @@ body {
   margin: 0;
   background: var(--bg-body);
   color: var(--text-primary);
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    Roboto,
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
 }
@@ -54,8 +48,7 @@ textarea:focus-visible {
   outline: none;
   border-color: var(--brand-primary);
   background: var(--bg-surface);
-  box-shadow:
-    0 0 0 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
 button:focus-visible,

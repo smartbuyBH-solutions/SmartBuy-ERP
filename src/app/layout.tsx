@@ -7,17 +7,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "SmartBuyBH ERP",
-  description:
-    "Plataforma de pré-atendimento e apoio operacional da Smart Buy BH.",
+  description: "Plataforma de pré-atendimento e apoio operacional da Smart Buy BH.",
 };
 
 type RootLayoutProps = Readonly<{
   children: ReactNode;
 }>;
 
-export default function RootLayout({
-  children,
-}: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR">
       <body>

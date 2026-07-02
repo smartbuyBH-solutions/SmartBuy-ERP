@@ -271,8 +271,7 @@ a.navigationItem:hover {
   }
 
   .navigationList {
-    grid-template-columns:
-      repeat(9, minmax(180px, 1fr));
+    grid-template-columns: repeat(9, minmax(180px, 1fr));
     overflow-x: auto;
     padding-bottom: 4px;
   }
@@ -301,8 +300,7 @@ a.navigationItem:hover {
   }
 
   .navigationList {
-    grid-template-columns:
-      repeat(9, minmax(168px, 1fr));
+    grid-template-columns: repeat(9, minmax(168px, 1fr));
   }
 }
 

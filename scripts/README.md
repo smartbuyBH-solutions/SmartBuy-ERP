@@ -22,6 +22,7 @@ Os scripts deste diretório integram a governança técnica do SmartBuy-ERP.
 ## Regra operacional
 
 O preflight deve ser executado antes de instalações, builds ou alterações estruturais.
+
 ## Qualidade estrutural
 
 - complexidade ciclomatica superior a 15 por funcao exige refatoracao;

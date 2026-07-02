@@ -31,109 +31,70 @@ const plannedModules = [
 export default function ErpHome() {
   return (
     <div className={styles.page}>
-      <section
-        aria-labelledby="overview-title"
-        className={styles.hero}
-      >
+      <section aria-labelledby="overview-title" className={styles.hero}>
         <div>
-          <p className={styles.eyebrow}>
-            Visão geral
-          </p>
+          <p className={styles.eyebrow}>Visão geral</p>
 
-          <h1
-            className={styles.title}
-            id="overview-title"
-          >
+          <h1 className={styles.title} id="overview-title">
             Central operacional
           </h1>
 
           <p className={styles.description}>
-            Acompanhe a implantação da plataforma
-            de pré-atendimento da Smart Buy BH.
+            Acompanhe a implantação da plataforma de pré-atendimento da Smart Buy BH.
           </p>
         </div>
 
         <span className={styles.statusBadge}>
-          <span
-            aria-hidden="true"
-            className={styles.statusDot}
-          />
-
+          <span aria-hidden="true" className={styles.statusDot} />
           Fundação ativa
         </span>
       </section>
 
-      <section
-        aria-label="Resumo da implantação"
-        className="sb-dashboard-grid"
-      >
+      <section aria-label="Resumo da implantação" className="sb-dashboard-grid">
         {implementationMetrics.map((metric) => (
-          <article
-            className="sb-panel"
-            key={metric.label}
-          >
-            <p className={styles.metricValue}>
-              {metric.value}
-            </p>
+          <article className="sb-panel" key={metric.label}>
+            <p className={styles.metricValue}>{metric.value}</p>
 
-            <p className={styles.metricLabel}>
-              {metric.label}
-            </p>
+            <p className={styles.metricLabel}>{metric.label}</p>
           </article>
         ))}
       </section>
 
       <section className="sb-parallel-grid">
         <article className="sb-panel">
-          <h2 className="sb-panel-title">
-            Módulos operacionais
-          </h2>
+          <h2 className="sb-panel-title">Módulos operacionais</h2>
 
           <p className={styles.panelText}>
-            A navegação principal já
-            está preparada. Os módulos serão
-            habilitados nas próximas fases.
+            A navegação principal já está preparada. Os módulos serão habilitados nas próximas
+            fases.
           </p>
 
           <ul className={styles.moduleList}>
             {plannedModules.map((moduleName) => (
-              <li
-                className={styles.moduleItem}
-                key={moduleName}
-              >
+              <li className={styles.moduleItem} key={moduleName}>
                 <span>{moduleName}</span>
 
-                <span className={styles.moduleStatus}>
-                  Planejado
-                </span>
+                <span className={styles.moduleStatus}>Planejado</span>
               </li>
             ))}
           </ul>
         </article>
 
         <article className="sb-panel">
-          <h2 className="sb-panel-title">
-            MercadoPhone permanece como registro final
-          </h2>
+          <h2 className="sb-panel-title">MercadoPhone permanece como registro final</h2>
 
           <p className={styles.panelText}>
-            O SmartBuyBH ERP organiza o pré-atendimento
-            e o apoio operacional. A conclusão da venda
+            O SmartBuyBH ERP organiza o pré-atendimento e o apoio operacional. A conclusão da venda
             continua no MercadoPhone.
           </p>
 
-          <span className={styles.roleBadge}>
-            Papel operacional definido
-          </span>
+          <span className={styles.roleBadge}>Papel operacional definido</span>
 
           <div className={styles.nextStep}>
-            <p className={styles.nextStepTitle}>
-              Próxima etapa
-            </p>
+            <p className={styles.nextStepTitle}>Próxima etapa</p>
 
             <p className={styles.nextStepText}>
-              Implementar os primeiros fluxos funcionais sobre
-              esta fundação.
+              Implementar os primeiros fluxos funcionais sobre esta fundação.
             </p>
           </div>
         </article>

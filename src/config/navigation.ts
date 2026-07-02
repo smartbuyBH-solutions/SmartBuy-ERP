@@ -4,23 +4,19 @@ type NavigationItemBase = Readonly<{
   shortLabel: string;
 }>;
 
-type AvailableNavigationItem =
-  NavigationItemBase &
+type AvailableNavigationItem = NavigationItemBase &
   Readonly<{
     availability: "available";
     href: string;
   }>;
 
-type PlannedNavigationItem =
-  NavigationItemBase &
+type PlannedNavigationItem = NavigationItemBase &
   Readonly<{
     availability: "planned";
     href: null;
   }>;
 
-export type NavigationItem =
-  | AvailableNavigationItem
-  | PlannedNavigationItem;
+export type NavigationItem = AvailableNavigationItem | PlannedNavigationItem;
 
 export const navigationItems = [
   {
