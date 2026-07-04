@@ -3,11 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { navigationItems } from "@/config/navigation";
+import type { NavigationItem } from "@/config/navigation";
 
 import styles from "./AppShell.module.css";
 
-export function AppNavigation() {
+type AppNavigationProps = Readonly<{
+  items: readonly NavigationItem[];
+}>;
+
+export function AppNavigation({ items }: AppNavigationProps) {
   const pathname = usePathname();
 
   return (
@@ -15,9 +19,8 @@ export function AppNavigation() {
       <p className={styles.navigationLabel}>Módulos</p>
 
       <ul className={styles.navigationList}>
-        {navigationItems.map((item) => {
+        {items.map((item) => {
           const isAvailable = item.availability === "available";
-
           const isActive = isAvailable && pathname === item.href;
 
           const itemClassName = [styles.navigationItem, isActive ? styles.navigationItemActive : ""]

@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-import { AppShell } from "@/components/app-shell/AppShell";
-
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SmartBuyBH ERP",
   description: "Plataforma de pré-atendimento e apoio operacional da Smart Buy BH.",
+  title: "SmartBuyBH ERP",
 };
 
 type RootLayoutProps = Readonly<{
@@ -17,9 +15,7 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR">
-      <body>
-        <AppShell>{children}</AppShell>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

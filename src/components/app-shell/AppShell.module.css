@@ -310,3 +310,139 @@ a.navigationItem:hover {
     transition: none;
   }
 }
+
+.headerActions {
+  min-width: 0;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.operatorSession {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 12px;
+}
+
+.operatorIdentity {
+  min-width: 0;
+  display: grid;
+  justify-items: end;
+}
+
+.operatorEyebrow,
+.operatorName,
+.operatorRole,
+.logoutError {
+  margin: 0;
+}
+
+.operatorEyebrow {
+  color: var(--text-tertiary);
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.operatorName {
+  max-width: 22rem;
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.operatorRole {
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  line-height: 1.3;
+}
+
+.logoutForm {
+  margin: 0;
+}
+
+.logoutButton {
+  min-height: 36px;
+  padding: 6px 12px;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.logoutButton:hover:not(:disabled) {
+  color: var(--branco);
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.logoutButton:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--brand-primary) 38%, transparent);
+  outline-offset: 2px;
+}
+
+.logoutButton:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.logoutError {
+  grid-column: 1 / -1;
+  justify-self: end;
+  color: var(--danger);
+  font-size: 0.6875rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .headerInner {
+    flex-wrap: wrap;
+  }
+
+  .headerActions {
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 640px) {
+  .headerActions {
+    width: 100%;
+    margin-left: 0;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .operatorSession {
+    width: 100%;
+  }
+
+  .operatorIdentity {
+    justify-items: start;
+  }
+
+  .operatorName {
+    max-width: min(70vw, 22rem);
+  }
+
+  .logoutButton {
+    min-width: 5.5rem;
+  }
+
+  .logoutError {
+    justify-self: start;
+  }
+}
