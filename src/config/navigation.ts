@@ -1,16 +1,17 @@
-type NavigationItemBase = Readonly<{
+export type NavigationItemBase = Readonly<{
   id: string;
   label: string;
   shortLabel: string;
 }>;
 
-type AvailableNavigationItem = NavigationItemBase &
+export type AvailableNavigationItem = NavigationItemBase &
   Readonly<{
     availability: "available";
     href: string;
+    requiredCapabilities: readonly string[];
   }>;
 
-type PlannedNavigationItem = NavigationItemBase &
+export type PlannedNavigationItem = NavigationItemBase &
   Readonly<{
     availability: "planned";
     href: null;
@@ -25,6 +26,7 @@ export const navigationItems = [
     shortLabel: "VG",
     availability: "available",
     href: "/",
+    requiredCapabilities: [],
   },
   {
     id: "lists",
@@ -83,3 +85,20 @@ export const navigationItems = [
     href: null,
   },
 ] as const satisfies readonly NavigationItem[];
+
+export function selectNavigationItems(
+  items: readonly NavigationItem[],
+  capabilities: readonly string[],
+): readonly NavigationItem[] {
+  const grantedCapabilities = new Set(
+    capabilities.map((capability) => capability.trim()).filter(Boolean),
+  );
+
+  return items.filter(
+    (item) =>
+      item.availability === "planned" ||
+      item.requiredCapabilities.every((requiredCapability) =>
+        grantedCapabilities.has(requiredCapability),
+      ),
+  );
+}

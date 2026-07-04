@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { navigationItems } from "./navigation";
+import { navigationItems, selectNavigationItems, type NavigationItem } from "./navigation";
 
 describe("navigationItems", () => {
   it("keeps overview as the only available navigation item", () => {
@@ -8,11 +8,12 @@ describe("navigationItems", () => {
 
     expect(availableItems).toHaveLength(1);
     expect(availableItems[0]).toMatchObject({
-      id: "overview",
-      label: "Visão geral",
-      shortLabel: "VG",
       availability: "available",
       href: "/",
+      id: "overview",
+      label: "Visão geral",
+      requiredCapabilities: [],
+      shortLabel: "VG",
     });
   });
 
@@ -23,7 +24,7 @@ describe("navigationItems", () => {
     expect(plannedItems.every((item) => item.href === null)).toBe(true);
   });
 
-  it("keeps identifiers and short labels unique in the canonical order", () => {
+  it("keeps identifiers and short labels unique in canonical order", () => {
     const ids = navigationItems.map((item) => item.id);
     const shortLabels = navigationItems.map((item) => item.shortLabel);
 
@@ -40,5 +41,48 @@ describe("navigationItems", () => {
       "commercial-intelligence",
       "technical-support",
     ]);
+  });
+});
+
+describe("selectNavigationItems", () => {
+  const controlledItems: readonly NavigationItem[] = [
+    {
+      availability: "available",
+      href: "/",
+      id: "overview",
+      label: "Visão geral",
+      requiredCapabilities: [],
+      shortLabel: "VG",
+    },
+    {
+      availability: "available",
+      href: "/controlled",
+      id: "controlled",
+      label: "Área controlada",
+      requiredCapabilities: ["controlled:read"],
+      shortLabel: "AC",
+    },
+    {
+      availability: "planned",
+      href: null,
+      id: "planned",
+      label: "Planejado",
+      shortLabel: "PL",
+    },
+  ];
+
+  it("removes navigable destinations without the required capability", () => {
+    expect(selectNavigationItems(controlledItems, []).map((item) => item.id)).toEqual([
+      "overview",
+      "planned",
+    ]);
+  });
+
+  it("keeps the destination when every required capability is granted", () => {
+    expect(
+      selectNavigationItems(controlledItems, ["ignored:capability", " controlled:read "]).map(
+        (item) => item.id,
+      ),
+    ).toEqual(["overview", "controlled", "planned"]);
   });
 });
