@@ -37,7 +37,7 @@ export function SessionBoundaryState({ result }: SessionBoundaryStateProps) {
           </p>
         ) : null}
 
-        <Link className={styles.action} href="/">
+        <Link className={styles.action} href={view.actionHref}>
           {view.actionLabel}
         </Link>
       </section>
