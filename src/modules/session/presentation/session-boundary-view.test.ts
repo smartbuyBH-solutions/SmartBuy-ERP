@@ -48,9 +48,23 @@ describe("getSessionBoundaryView", () => {
       const view = getSessionBoundaryView(result);
 
       expect(view.title).toBe(expectedTitle);
+      expect(view.actionHref.length).toBeGreaterThan(0);
       expect(view.actionLabel.length).toBeGreaterThan(0);
       expect(view.description.length).toBeGreaterThan(0);
       expect(["danger", "warning"]).toContain(view.tone);
     },
   );
+
+  it("routes session revalidation to the login entry point", () => {
+    const view = getSessionBoundaryView({
+      code: "AUTHENTICATION_REQUIRED",
+      correlationId: null,
+      status: "session-expired",
+    });
+
+    expect(view).toMatchObject({
+      actionHref: "/login",
+      actionLabel: "Revalidar sessão",
+    });
+  });
 });

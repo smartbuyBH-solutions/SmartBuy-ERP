@@ -23,3 +23,11 @@ export type { CreateHttpOperatorSessionGatewayOptions } from "./infrastructure/h
 export { createHttpOperatorSessionGateway } from "./infrastructure/http-session-gateway";
 export type { FetchOperatorSessionOptions, SessionFetch } from "./infrastructure/session-api";
 export { fetchOperatorSession } from "./infrastructure/session-api";
+
+export type { StartSessionInput, StartSessionResult } from "./application/start-session";
+export { startSession } from "./application/start-session";
+export type {
+  IdentityPasswordAuthenticationResult,
+  IdentityPasswordAuthenticator,
+  IdentityPasswordCredentials,
+} from "./application/session-ports";

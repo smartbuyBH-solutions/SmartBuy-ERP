@@ -3,6 +3,7 @@ import type { AuthError } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
 import type {
+  IdentityPasswordAuthenticator,
   IdentitySessionSource,
   IdentitySessionTerminator,
 } from "@/modules/session/application/session-ports";
@@ -12,6 +13,7 @@ import { readServerAuthConfig, type ServerAuthConfig } from "./supabase-config";
 export type ServerIdentityRuntime =
   | Readonly<{
       config: ServerAuthConfig;
+      identityAuthenticator: IdentityPasswordAuthenticator;
       identitySource: IdentitySessionSource;
       identityTerminator: IdentitySessionTerminator;
       status: "available";
@@ -119,6 +121,36 @@ export async function createServerIdentityRuntime(
     },
   };
 
+  const identityAuthenticator: IdentityPasswordAuthenticator = {
+    async signInWithPassword({ email, password }) {
+      try {
+        const { error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (!error) {
+          return {
+            status: "authenticated",
+          };
+        }
+
+        if ([400, 401, 403, 422].includes(error.status ?? 0)) {
+          return {
+            status: "invalid-credentials",
+          };
+        }
+
+        return {
+          status: "service-unavailable",
+        };
+      } catch {
+        return {
+          status: "service-unavailable",
+        };
+      }
+    },
+  };
   const identityTerminator: IdentitySessionTerminator = {
     async signOut() {
       try {
@@ -145,6 +177,7 @@ export async function createServerIdentityRuntime(
 
   return {
     config: configuration.config,
+    identityAuthenticator,
     identitySource,
     identityTerminator,
     status: "available",

@@ -36,3 +36,25 @@ export type OperatorSessionGatewayInput = Readonly<{
 export interface OperatorSessionGateway {
   fetchSession(input: OperatorSessionGatewayInput): Promise<SessionResult>;
 }
+
+export type IdentityPasswordCredentials = Readonly<{
+  email: string;
+  password: string;
+}>;
+
+export type IdentityPasswordAuthenticationResult =
+  | Readonly<{
+      status: "authenticated";
+    }>
+  | Readonly<{
+      status: "invalid-credentials";
+    }>
+  | Readonly<{
+      status: "service-unavailable";
+    }>;
+
+export interface IdentityPasswordAuthenticator {
+  signInWithPassword(
+    credentials: IdentityPasswordCredentials,
+  ): Promise<IdentityPasswordAuthenticationResult>;
+}
